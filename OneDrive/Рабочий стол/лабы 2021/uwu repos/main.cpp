@@ -1,35 +1,74 @@
-#include "fun.h"
+#include<iostream>
+#include "triangle.h"
+#include "set.h"
+
+using namespace std;
 
 int main() {
-    float var, a, x;
-    var = 15.123;
-    Theintegerpartofnumber(var, a, x);
-    Theintegerpartofnumber1(&var, &a, &x);
+	cout << "Task\3\n\n";
 
-    float b;
-    b = 15;
-    reciprocalnumber(b);
-    reciprocalnumber1(&b);
+	Triangle tr1(3, 4, 5);
+	Triangle tr2(12, 10, 10);
 
-    Figure square;
-    square.x1 = 0, square.y1 = 0;
-    square.x2 = 4, square.y2 = 0;
-    square.x3 = 4, square.y3 = 4;
-    square.x4 = 0, square.y4 = 4;
-    int vector_x = 5;
-    int vector_y = 5;
-    shift(square, vector_x, vector_y);
-    shift1(&square, &vector_x, &vector_y);
+	tr1.print();
+	tr2.print();
 
-    int arr[3][3] = { {1, 2, 3},
-                   {4, 5, 6},
-                   {7, 8 ,9} };
-    int z, y;
-    z = 3;
-    y = 1;
-    chageStrings1(&arr, &z, &y);
-    cout << endl;
-    chageStrings(arr, z, y);
-    return 0;
+	if (tr1 == tr2) {
+		cout << "S first and second voltage triangle\n\n";
+	}
+	if (tr1 != tr2) {
+		cout << "S first and second triangles are not equal\n\n";
+	}
+	if (tr1 > tr2) {
+		cout << "S the first triangle is greater then the second triangle\n\n";
+	}
+	if (tr1 < tr2) {
+		cout << "S the first triangle is less than the second triangle\n\n";
+	}
+	float x1, y1;
+	cout << "Enter a vector value to offset the triangle(1):";
+	cin >> x1 >> y1;
+	tr1.moveVector(x1, y1);
 
+	float x2, y2;
+	cout << "Enter a vector value to offset the triangle(2):";
+	cin >> x2 >> y2;
+	tr2.moveVector(x2, y2);
+
+	cout << "\n\nTASK 7\n\n";
+
+	set<int> s1;
+	cout << "Values of the first set:";
+	for (int i = 0; i < 3; i++) {
+		s1.insert(i);
+	}
+	Set set1(s1);
+	set1.print();
+
+	set<int> s2;
+	cout << "Values of the second set:";
+	for (int i = 9; i > 6; i--) {
+		s2.insert(i);
+	}
+	Set set2(s2);
+	set2.print();
+
+	if (set1 == set2) {
+		cout << "Sets are equal\n";
+	}
+	if (set1 != set2) {
+		cout << "Sets are not equal\n";
+	}
+	cout << "Add 8 (to the 1st): ";
+	set1 += 8;
+	set1.print();
+
+	cout << "remove 2 (into the 1st): ";
+	set1 -= 2;
+	set1.print();
+
+	cout << "Adding sets 1 and 2: ";
+	set1 + set2;
+	set1.print();
+	return 0;
 }
